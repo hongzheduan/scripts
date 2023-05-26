@@ -1,5 +1,8 @@
 #!/bin/bash
 
+DS_NAME=$(cat file_name_in_use.txt)
+TARGET_FIELDS=$(cat fieldlist.txt)
+
 cat id.csv | sed 's/,$/,NA/g' > ${DS_NAME}.csv
 for TARGET in ${TARGET_FIELDS};do
   N_TARGET=$(awk -v target="$TARGET" 'BEGIN{FS=OFS="\t"}$1==target{printf("%s_%s\n", $5,$4)}' dictionary_final.tsv | wc -l)
