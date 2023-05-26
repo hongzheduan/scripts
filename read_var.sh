@@ -3,6 +3,8 @@
 DS_NAME=$(cat /opt/notebooks/file_name_in_use.txt)
 TARGET_FIELDS=$(cat /opt/notebooks/fieldlist.txt)
 
+echo DS_NAME is $DS_NAME, TARGET_FIELDS is $TARGET_FIELDS
+
 cat /opt/notebooks/id.csv | sed 's/,$/,NA/g' > /opt/notebooks/${DS_NAME}.csv
 for TARGET in ${TARGET_FIELDS};do
   N_TARGET=$(awk -v target="$TARGET" 'BEGIN{FS=OFS="\t"}$1==target{printf("%s_%s\n", $5,$4)}' /opt/notebooks/dictionary_final.tsv | wc -l)
