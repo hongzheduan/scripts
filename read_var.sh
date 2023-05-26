@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DS_NAME=$(cat file_name_in_use.txt)
-TARGET_FIELDS=$(cat fieldlist.txt)
+DS_NAME=$(cat /opt/notebooks/file_name_in_use.txt)
+TARGET_FIELDS=$(cat /opt/notebooks/fieldlist.txt)
 
 cat id.csv | sed 's/,$/,NA/g' > ${DS_NAME}.csv
 for TARGET in ${TARGET_FIELDS};do
